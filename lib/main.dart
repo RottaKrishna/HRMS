@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 //Line added by Vamsi
+//New Branch generated
+//Tasks:
+//1. Profile page
+//2. Documents + Payslips page
+//3. Claims page
 
 void main() {
   runApp(const MainApp());
