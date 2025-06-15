@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hrms_flutter_application/claims.dart';
 import 'package:hrms_flutter_application/profile.dart';
 
 //Line added by Vamsi
@@ -17,6 +18,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Scaffold(body: ProfilePage()));
+    return const MaterialApp(home: Scaffold(body: ClaimsPage()));
   }
 }

@@ -85,7 +85,9 @@ class _ClaimsPageState extends State<ClaimsPage> {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: _getStatusColor(claim.status).withOpacity(0.1),
+                        color: _getStatusColor(
+                          claim.status,
+                        ).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
@@ -105,12 +107,25 @@ class _ClaimsPageState extends State<ClaimsPage> {
             bottom: 16,
             right: 16,
             child: FloatingActionButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
               onPressed: () {
                 // TODO: show modal bottom sheet or dialog
                 showModalBottomSheet(
                   context: context,
-                  builder:
-                      (context) => const Center(child: Text("New Claim Form")),
+                  isScrollControlled: true,
+                  builder: (context) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
+                        top: 16,
+                        left: 16,
+                        right: 16,
+                      ),
+                      child: AddClaimForm(onSubmit: _addClaim),
+                    );
+                  },
                 );
               },
               child: const Icon(Icons.add), // or Icons.file_upload
@@ -118,6 +133,65 @@ class _ClaimsPageState extends State<ClaimsPage> {
           ),
         ],
       ),
+    );
+  }
+
+  void _addClaim(Claim newClaim) {
+    setState(() {
+      claims.add(newClaim);
+    });
+  }
+}
+
+class AddClaimForm extends StatefulWidget {
+  final void Function(Claim) onSubmit;
+
+  const AddClaimForm({super.key, required this.onSubmit});
+
+  @override
+  State<AddClaimForm> createState() => _AddClaimFormState();
+}
+
+class _AddClaimFormState extends State<AddClaimForm> {
+  ClaimType selectedType = ClaimType.Medical;
+  final amountController = TextEditingController();
+
+  void _submit() {
+    final amount = int.tryParse(amountController.text);
+    if (amount == null) return;
+
+    final newClaim = Claim(selectedType, DateTime.now(), amount, 'Pending');
+
+    widget.onSubmit(newClaim);
+    Navigator.of(context).pop();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        DropdownButton<ClaimType>(
+          value: selectedType,
+          onChanged: (value) {
+            if (value != null) {
+              setState(() => selectedType = value);
+            }
+          },
+          items:
+              ClaimType.values.map((type) {
+                return DropdownMenuItem(value: type, child: Text(type.name));
+              }).toList(),
+        ),
+        TextField(
+          controller: amountController,
+          decoration: const InputDecoration(labelText: 'Amount'),
+          keyboardType: TextInputType.number,
+        ),
+        const SizedBox(height: 16),
+        ElevatedButton(onPressed: _submit, child: const Text('Add Claim')),
+        const SizedBox(height: 16),
+      ],
     );
   }
 }
