@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hrms_flutter_application/Vamsi_colors.dart';
+import 'package:hrms_flutter_application/payslips_page.dart';
 
 class Requests extends StatefulWidget {
   const Requests({super.key});
@@ -26,7 +27,7 @@ class _RequestState extends State<Requests> {
               groupValue: selectedTab,
               selectedColor: AppColors.agreedPurple,
               borderColor: Colors.grey.shade400,
-              pressedColor: AppColors.agreedPurple,
+              pressedColor: AppColors.agreedPurple.withValues(alpha: 0.5),
               children: const {
                 'Documents': Padding(
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -68,21 +69,6 @@ class DocumentsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'Documents Page',
-      style: Theme.of(context).textTheme.headlineSmall,
-    );
-  }
-}
-
-// ========================
-// Payslips Page Widget
-// ========================
-class PayslipsPage extends StatelessWidget {
-  const PayslipsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Payslips Page',
       style: Theme.of(context).textTheme.headlineSmall,
     );
   }
