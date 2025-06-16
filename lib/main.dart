@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hrms_flutter_application/claims.dart';
 import 'package:hrms_flutter_application/profile.dart';
+import 'package:hrms_flutter_application/requests.dart';
 
-//Line added by Vamsi
-//New Branch generated
+//Merge from branch to master by Vamsi.
+//Very Minor changes to main file. Should override the original main file
 //Tasks:
 //1. Profile page
 //2. Documents + Payslips page
@@ -18,6 +19,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Scaffold(body: ClaimsPage()));
+    return const MaterialApp(home: Scaffold(body: Requests()));
   }
 }

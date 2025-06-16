@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hrms_flutter_application/colors.dart';
+import 'package:hrms_flutter_application/Vamsi_colors.dart';
 import 'package:intl/intl.dart';
 
 enum ClaimType { Medical, Insurance, Transport, Food }
