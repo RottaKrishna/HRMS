@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hrms_flutter_application/Vamsi_colors.dart';
+import 'package:hrms_flutter_application/documents_page.dart';
 import 'package:hrms_flutter_application/payslips_page.dart';
 
 class Requests extends StatefulWidget {
@@ -55,21 +56,6 @@ class _RequestState extends State<Requests> {
           ),
         ],
       ),
-    );
-  }
-}
-
-// ========================
-// Documents Page Widget
-// ========================
-class DocumentsPage extends StatelessWidget {
-  const DocumentsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Documents Page',
-      style: Theme.of(context).textTheme.headlineSmall,
     );
   }
 }
