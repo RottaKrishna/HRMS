@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hrms_flutter_application/screens/claims.dart';
 import 'package:hrms_flutter_application/screens/leave_wfh_screen.dart';
+import 'package:hrms_flutter_application/screens/profile.dart';
+import 'package:hrms_flutter_application/screens/requests.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:hrms_flutter_application/screens/attendance_screen.dart';
 
@@ -16,9 +19,9 @@ class _EmployeeDashboardState extends State<EmployeeDashboard> {
   final List<Widget> _screens = [
     EmployeeDashboardBody(),
     LeaveWFHScreen(),
-    RequestScreen(),
+    Requests(),
     AttendanceScreen1(),
-    ClaimsScreen(),
+    ClaimsPage(),
   ];
 
   void _onTap(int index) {
@@ -77,9 +80,12 @@ class EmployeeDashboardBody extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 12),
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: Icon(Icons.person, color: Colors.blue),
+                child: InkWell(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.person, color: Colors.blue),
+                  ),
                 ),
               ),
             ],

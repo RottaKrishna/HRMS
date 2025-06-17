@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hrms_flutter_application/Vamsi_colors.dart';
-import 'package:hrms_flutter_application/documents_page.dart';
-import 'package:hrms_flutter_application/payslips_page.dart';
+import 'package:hrms_flutter_application/screens/documents_page.dart';
+import 'package:hrms_flutter_application/screens/payslips_page.dart';
 
 class Requests extends StatefulWidget {
   const Requests({super.key});

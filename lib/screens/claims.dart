@@ -58,80 +58,83 @@ class _ClaimsPageState extends State<ClaimsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      child: Stack(
-        children: [
-          ListView.builder(
-            itemCount: claims.length,
-            itemBuilder: (context, index) {
-              final claim = claims[index];
-              return ListTile(
-                leading: Icon(_getIcon(claim.type), size: 36),
-                title: Text(claim.type.name),
-                subtitle: Text(_formatDate(claim.date)),
-                trailing: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '₹${claim.amount}',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 4),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
+    return Scaffold(
+      appBar: AppBar(title: const Text('Claims')),
+      body: Container(
+        padding: const EdgeInsets.all(16),
+        child: Stack(
+          children: [
+            ListView.builder(
+              itemCount: claims.length,
+              itemBuilder: (context, index) {
+                final claim = claims[index];
+                return ListTile(
+                  leading: Icon(_getIcon(claim.type), size: 36),
+                  title: Text(claim.type.name),
+                  subtitle: Text(_formatDate(claim.date)),
+                  trailing: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '₹${claim.amount}',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      decoration: BoxDecoration(
-                        color: _getStatusColor(
+                      Container(
+                        margin: const EdgeInsets.only(top: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: _getStatusColor(
+                            claim.status,
+                          ).withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
                           claim.status,
-                        ).withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        claim.status,
-                        style: TextStyle(
-                          color: _getStatusColor(claim.status),
-                          fontSize: 12,
+                          style: TextStyle(
+                            color: _getStatusColor(claim.status),
+                            fontSize: 12,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          Positioned(
-            bottom: 16,
-            right: 16,
-            child: FloatingActionButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-              onPressed: () {
-                // TODO: show modal bottom sheet or dialog
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (context) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom,
-                        top: 16,
-                        left: 16,
-                        right: 16,
-                      ),
-                      child: AddClaimForm(onSubmit: _addClaim),
-                    );
-                  },
+                    ],
+                  ),
                 );
               },
-              child: const Icon(Icons.add), // or Icons.file_upload
             ),
-          ),
-        ],
+            Positioned(
+              bottom: 16,
+              right: 16,
+              child: FloatingActionButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                onPressed: () {
+                  // TODO: show modal bottom sheet or dialog
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (context) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom,
+                          top: 16,
+                          left: 16,
+                          right: 16,
+                        ),
+                        child: AddClaimForm(onSubmit: _addClaim),
+                      );
+                    },
+                  );
+                },
+                child: const Icon(Icons.add), // or Icons.file_upload
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
