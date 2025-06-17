@@ -127,10 +127,10 @@ class AddDocRequest extends StatefulWidget {
   const AddDocRequest({super.key, required this.onSubmit});
 
   @override
-  State<AddDocRequest> createState() => _addDocRequestState();
+  State<AddDocRequest> createState() => _AddDocRequestState();
 }
 
-class _addDocRequestState extends State<AddDocRequest> {
+class _AddDocRequestState extends State<AddDocRequest> {
   DocType selectedType = DocType.OfferLetter;
 
   void _submit() {
