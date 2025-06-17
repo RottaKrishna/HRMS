@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-//Line added by Vamsi
+import 'screens/splash_screen.dart'; // Import the splash screen
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +11,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(), // Set splash screen as the first screen
     );
   }
 }
