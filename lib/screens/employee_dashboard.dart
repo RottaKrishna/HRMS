@@ -150,7 +150,7 @@ class EmployeeDashboardBody extends StatelessWidget {
               children: [
                 Text("Upcoming Events", style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: 8),
-                eventTile(Icons.cake, "Vagdevi's Birthday", "Office Cafeteria"),
+                eventTile(Icons.cake, "Vamsi's Birthday", "Office Cafeteria"),
                 eventTile(Icons.event, "Team Meeting", "Conference Room A"),
                 eventTile(Icons.celebration, "Annual Day", "Auditorium"),
               ],

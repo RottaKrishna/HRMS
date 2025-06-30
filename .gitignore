@@ -48,3 +48,7 @@ linux/flutter/generated_plugin_registrant.cc
 android/
 build/
 ios/
+linux/
+macos/
+windows/
+pubspec.lock
